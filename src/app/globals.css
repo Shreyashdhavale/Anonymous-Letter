@@ -1,26 +1,82 @@
-@import "tailwindcss";
+/* src/app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Merriweather:wght@300;400;700&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 25%, #cd853f 50%, #daa520 75%, #b8860b 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  font-family: 'Merriweather', serif;
 }
+
+/* Vintage Paper Effect */
+.vintage-paper {
+  background: linear-gradient(135deg, #fefdf8 0%, #f9f6f0 50%, #f4f1e8 100%);
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(139, 115, 85, 0.05) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(160, 82, 45, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px, 50px 50px;
+  box-shadow: 
+    0 8px 32px rgba(139, 69, 19, 0.3), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Letter Shadow Effect */
+.letter-shadow {
+  filter: drop-shadow(4px 8px 16px rgba(139, 69, 19, 0.4)) 
+          drop-shadow(0 2px 8px rgba(139, 69, 19, 0.2));
+}
+
+/* Wax Seal */
+.wax-seal {
+  background: radial-gradient(circle, #d4af37 0%, #b8860b 50%, #8b6914 100%);
+  border: 3px solid #8b6914;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.6), 
+              inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.wax-seal::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100px) rotate(-2deg); opacity: 0; }
+  to { transform: translateY(0) rotate(-0.5deg); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes typewriter {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes sealBounce {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.05) rotate(5deg); }
+}
+
+.animate-fade-in { animation: fadeIn 0.8s ease-in-out; }
+.animate-slide-up { animation: slideUp 0.6s ease-out; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-typewriter { animation: typewriter 1s steps(20) infinite; }
+.animate-seal-bounce { animation: sealBounce 2s ease-in-out infinite; }
